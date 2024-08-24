@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN PAGE</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background: linear-gradient(to bottom left, rgba(81, 186, 247, 0.507), rgba(194, 118, 238, 0.774), rgba(0, 0, 255, 0.781));
+        }
+
+        .LOGING__SEC {
+            height: fit-content;
+            width: 500px;
+            background-color: transparent;
+            border: 2px solid rgba(0, 0, 0, 0.329);
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.397);
+            position: relative;
+        }
+
+        .LOGING__INFO {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            align-items: center;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        #error_name,
+        #error_password,
+        #error_email,
+        #error_address {
+            display: none;
+        }
+
+        .w {
+            display: block;
+            color: red;
+        }
+
+        .LOGING__FORM {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            gap: 20px;
+            margin-top: 10px;
+            margin-left: 50px;
+        }
+
+        .login_name input,
+        .login_password input,
+        .login_email input,
+        .login_address input {
+            margin-top: 10px;
+            width: 80%;
+            height: 30px;
+            border-radius: 5px;
+            border: none;
+            padding: 10px;
+        }
+
+        .login_password {
+            position: relative;
+        }
+
+        .login_password .eye-icon {
+            position: absolute;
+            right: 100px;
+            bottom: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: rgb(0, 0, 0);
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0.5px 1px 0.5px 1px rgba(0, 0, 0, 0.473);
+        }
+
+        .login_name label,
+        .login_password label,
+        .login_email label,
+        .login_address label {
+            font-weight: 900;
+            font-size: large;
+            color: white;
+        }
+
+        .login__submit {
+            margin-bottom: 40px;
+        }
+
+        .login__submit input {
+            padding: 5px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgba(152, 251, 152, 0.473);
+            font-weight: 800;
+            color: black;
+            cursor: pointer;
+        }
+
+        .logi_remind {
+            display: flex;
+            align-items: center;
+            color: blue;
+        }
+
+        @media screen and (max-width: 600px) {
+            .LOGING__SEC {
+                height: fit-content;
+                width: 280px;
+                margin: 0;
+                padding: 0;
+                overflow-y: hidden;
+                overflow-x: hidden;
+            }
+
+            .login_name input,
+            .login_password input,
+            .login_email input,
+            .login_address input {
+                width: 80%;
+                height: 30px;
+            }
+
+            .LOGING__FORM {
+                margin-left: 40px;
+            }
+            
+        .login_password .eye-icon {
+            position: absolute;
+            right: 50px;
+            bottom: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: rgb(0, 0, 0);
+        }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="LOGING__SEC">
+            <div class="LOGING__INFO">
+                <h1>Registration Form</h1>
+                <form id="registrationForm" class="LOGING__FORM">
+                    <div class="login_name">
+                        <label for="inputbox_1">NAME:</label><br>
+                        <input type="text" id="inputbox_1" placeholder="Enter your name">
+                        <span id="error_name" class="w">Error: Please enter your name</span>
+                    </div>
+                    <div class="login_password">
+                        <label for="inputbox_2">PASSWORD:</label><br>
+                        <input type="password" id="inputbox_2" placeholder="Enter your password">
+                        <i class="fa fa-eye eye-icon" id="togglePassword"></i>
+                        <span id="error_password" class="w">Error: Please enter your password</span>
+                    </div>
+                    <div class="login_email">
+                        <label for="inputbox_3">EMAIL:</label><br>
+                        <input type="email" id="inputbox_3" placeholder="Enter your email">
+                        <span id="error_email" class="w">Error: Please enter a valid email</span>
+                    </div>
+                    <div class="login_address">
+                        <label for="inputbox_4">ADDRESS:</label><br>
+                        <input type="text" id="inputbox_4" placeholder="Enter your address">
+                        <span id="error_address" class="w">Error: Please enter your address</span>
+                    </div>
+                    <div class="logi_remind">
+                        <input type="checkbox" id="rememberMe"><label for="rememberMe">Remember me</label>
+                    </div>
+                    <div class="login__submit">
+                        <input type="submit" id="submitBtn" value="Submit">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('registrationForm');
+            var inputBox1 = document.getElementById('inputbox_1');
+            var inputBox2 = document.getElementById('inputbox_2');
+            var inputBox3 = document.getElementById('inputbox_3');
+            var inputBox4 = document.getElementById('inputbox_4');
+            
+            var errorName = document.getElementById('error_name');
+            var errorPassword = document.getElementById('error_password');
+            var errorEmail = document.getElementById('error_email');
+            var errorAddress = document.getElementById('error_address');
+            
+            var togglePassword = document.getElementById('togglePassword');
+
+            form.addEventListener('submit', function (event) {
+                var isValid = true;
+                
+                // Validate Name
+                if (inputBox1.value.trim() === "") {
+                    errorName.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorName.style.display = 'none';
+                }
+        
+                // Validate Password
+                if (inputBox2.value.trim() === "") {
+                    errorPassword.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorPassword.style.display = 'none';
+                }
+        
+                // Validate Email
+                if (inputBox3.value.trim() === "" || !validateEmail(inputBox3.value)) {
+                    errorEmail.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorEmail.style.display = 'none';
+                }
+        
+                // Validate Address
+                if (inputBox4.value.trim() === "") {
+                    errorAddress.style.display = 'block';
+                    isValid = false;
+                } else {
+                    errorAddress.style.display = 'none';
+                }
+        
+                // Prevent form submission if invalid
+                if (!isValid) {
+                    event.preventDefault(); // Prevent form submission
+                } else {
+                    alert('Form submitted successfully!');
+                }
+            });
+
+            // Toggle password visibility
+            togglePassword.addEventListener('click', function () {
+                var type = inputBox2.type === 'password' ? 'text' : 'password';
+                inputBox2.type = type;
+                this.classList.toggle('fa-eye-slash');
+            });
+
+            // Remove error message when user starts typing
+            inputBox1.addEventListener('input', function () {
+                if (this.value.trim() !== "") {
+                    errorName.style.display = 'none';
+                }
+            });
+            inputBox2.addEventListener('input', function () {
+                if (this.value.trim() !== "") {
+                    errorPassword.style.display = 'none';
+                }
+            });
+            inputBox3.addEventListener('input', function () {
+                if (this.value.trim() !== "" && validateEmail(this.value)) {
+                    errorEmail.style.display = 'none';
+                }
+            });
+            inputBox4.addEventListener('input', function () {
+                if (this.value.trim() !== "") {
+                    errorAddress.style.display = 'none';
+                }
+            });
+
+            function validateEmail(email) {
+                var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+        });
+    </script>
+</body>
+</html>
